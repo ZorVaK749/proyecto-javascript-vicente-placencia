@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="bg-blue-600 p-4 text-white flex items-center">
+  <a href="index.html" class="mr-4">Inicio</a>
+  <a href="proyectos.html" class="mr-4">Proyectos</a>
+  <a href="contacto.html">Contacto</a>
+  <button onclick="toggleModoOscuro()" class="ml-auto bg-gray-200 text-black px-3 py-1 rounded">
+    ☀️/🌙
+  </button>
+</nav>
+
+<main class="container mx-auto p-4 min-h-screen">
+    <!-- Título y botones de filtro -->
+    <h1 class="text-3xl font-bold text-center my-8">Mis Proyectos</h1>
+    <div class="flex flex-wrap justify-center gap-4 mb-8">
+        <button 
+            onclick="filtrarProyectos('todos')" 
+            class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition"
+        >
+            Todos
+        </button>
+        <button 
+            onclick="filtrarProyectos('web')" 
+            class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded transition"
+        >
+            Web
+        </button>
+        <button 
+            onclick="filtrarProyectos('javascript')" 
+            class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded transition"
+        >
+            JavaScript
+        </button>
+    </div>
+
+    <!-- Grid de proyectos -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Proyecto 1 (categoría "web") -->
+        <div class="proyecto" data-categoria="web">
+            <div class="bg-white border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
+                <img src="src/img/PuertoGames.png" alt="PuertoGames" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-black font-bold text-xl mb-2">Puerto Games</h3>
+                    <p class="text-gray-700">Diseño responsive para una tienda online.</p>
+                    <a href="https://zorvak749.github.io/PuertoGames-web/" class="text-blue-600 hover:underline mt-2 block">Ver demo →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Proyecto 2 (categoría "javascript") -->
+        <div class="proyecto" data-categoria="javascript">
+            <div class="bg-white border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
+                <img src="src/img/kuru-kuru.png" alt="kuru-kuru" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-black font-bold text-xl mb-2">Pagina JS</h3>
+                    <p class="text-gray-700">Aplicación interactiva con JavaScript.</p>
+                    <a href="https://duiqt.github.io/herta_kuru/" class="text-blue-600 hover:underline mt-2 block">Ver demo →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Proyecto 3 (categoría "web") -->
+        <div class="proyecto" data-categoria="web">
+            <div class="bg-white border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
+                <img src="src/img/PuertoGamesTCSS.png" alt="PuertoGamesTCSS" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-black font-bold text-xl mb-2">Puerto Games TailwindCSS</h3>
+                    <p class="text-gray-700">Tienda con Tailwind CSS y animaciones.</p>
+                    <a href="https://arukusr.github.io/puertogames-tailwind-equipoZoRuRexINC/" class="text-blue-600 hover:underline mt-2 block">Ver demo →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+  <!--Botón Ver más-->
+    <div class="flex justify-center mb-8">
+        <button id="boton-ver-mas" onclick="toggleProyectos()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl">
+            Ver más
+        </button>
+    </div>
+
+    <!-- Proyectos extra-->
+    <div id="proyectos-extra" class="hidden">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <div class="proyecto" data-categoria="web">
+                <div class="bg-white border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
+                    <img src="src/img/PuertoGames.png" alt="PuertoGames" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-black font-bold text-xl mb-2">Puerto Games</h3>
+                        <p class="text-gray-700">Diseño responsive para una tienda online.</p>
+                        <a href="https://zorvak749.github.io/PuertoGames-web/" class="text-blue-600 hover:underline mt-2 block">Ver demo →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="proyecto" data-categoria="javascript">
+                <div class="bg-white border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
+                    <img src="src/img/kuru-kuru.png" alt="kuru-kuru" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-black font-bold text-xl mb-2">Pagina JS</h3>
+                        <p class="text-gray-700">Aplicación interactiva con JavaScript.</p>
+                        <a href="https://duiqt.github.io/herta_kuru/" class="text-blue-600 hover:underline mt-2 block">Ver demo →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="proyecto" data-categoria="web">
+                <div class="bg-white border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
+                    <img src="src/img/PuertoGamesTCSS.png" alt="PuertoGamesTCSS" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-black font-bold text-xl mb-2">Puerto Games TailwindCSS</h3>
+                        <p class="text-gray-700">Tienda con Tailwind CSS y animaciones.</p>
+                        <a href="https://arukusr.github.io/puertogames-tailwind-equipoZoRuRexINC/" class="text-blue-600 hover:underline mt-2 block">Ver demo →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-gray-800 p-4 text-white text-center">
+  © 2025 Mi Portafolio<br />
+  ZoRuRex INC.
+</footer>
+
+<!--Scripts-->
+<script>
+    // Toggle para mostrar/ocultar proyectos (ejemplo: "Ver más")
+    function toggleProyectos() {
+      const proyectosExtra = document.getElementById("proyectos-extra");
+      const boton = document.getElementById("boton-ver-mas");
+      proyectosExtra.classList.toggle("hidden");
+      boton.textContent = proyectosExtra.classList.contains("hidden") ? "Ver más" : "Ver menos";
+    }
+
+    // Filtrar proyectos por categoría
+    function filtrarProyectos(categoria) {
+      const proyectos = document.querySelectorAll(".proyecto");
+      
+      proyectos.forEach(proyecto => {
+        if (categoria === "todos" || proyecto.dataset.categoria === categoria) {
+          proyecto.classList.remove("hidden");
+        } else {
+          proyecto.classList.add("hidden");
+        }
+      });
+    }
+
+    // Modo oscuro
+    function toggleModoOscuro() {
+      document.body.classList.toggle("bg-gray-900");
+      document.body.classList.toggle("text-white");
+
+      const isDark = document.body.classList.contains("bg-gray-900");
+      localStorage.setItem("modoOscuro", isDark);
+
+      // Cambiar fondo y texto de las tarjetas de proyecto
+      const tarjetas = document.querySelectorAll(".proyecto > div");
+
+      tarjetas.forEach(t => {
+        t.classList.toggle("bg-white", !isDark);
+        t.classList.toggle("bg-gray-800", isDark);
+        t.classList.toggle("text-black", !isDark);
+        t.classList.toggle("text-white", isDark);
+
+        const descripcion = t.querySelector("p");
+        if (descripcion) {
+          descripcion.classList.toggle("text-gray-700", !isDark);
+          descripcion.classList.toggle("text-gray-300", isDark);
+        }
+
+        const enlace = t.querySelector("a");
+        if (enlace) {
+          enlace.classList.toggle("text-blue-600", !isDark);
+          enlace.classList.toggle("text-blue-300", isDark);
+        }
+      });
+    }
+
+    // Aplicar modo guardado
+    if (localStorage.getItem("modoOscuro") === "true") {
+      toggleModoOscuro(); // activa el modo al cargar
+    }
+</script>
+    
+</body>
+</html>
